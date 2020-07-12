@@ -39,7 +39,7 @@ stream.on("tweet", async function (tweet) {
     base64Arr.push(image64);
   }
 
-  if(!b64content.length){
+  if(!base64Arr.length){
     T.post('statuses/update', {
       'status': `@${tweetAuthor} Não consegui identificar nenhuma imagem em seu tweet.`,
       'in_reply_to_status_id': inReplyToStatusId 
