@@ -10,7 +10,7 @@ deepai.setApiKey(process.env.DEEP_AI_API_KEY);
 const T = require("./src/loadTwit.js");
 
 // tweeting functions
-const {tweetNoPicturesFound, tweetImage} = require("./src/loadTwit.js");
+const {tweetNoPicturesFound, tweetImage} = require("./src/tweets.js");
 
 
 const stream = T.stream("statuses/filter", { track: "DeepDreamMeBot" });
