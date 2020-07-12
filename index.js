@@ -15,14 +15,17 @@ const {tweetNoPicturesFound, tweetImage} = require("./src/tweets.js");
 
 const stream = T.stream("statuses/filter", { track: "DeepDreamMeBot" });
 stream.on("tweet", async function (tweet) {
+  console.log("Someone tweeted");
   const inReplyToStatusId = tweet.id_str;
   const tweetAuthor = tweet.user.screen_name;
+  console.log("Starting the filters");
   const base64Arr = tweet.extended_entities.media
     .filter(media => media.type === "photo")
     .map(media => media.url)
     .map(async (link) => deepai.callStandardApi("deepdream", {image: link}))
     .map(result => result.output_url)
     .map(async (url) => await imageToBase64(url));
+  console.log("Finished transforming arrays...", {base64Arr});
 
   // If there are no images in the tweet, tweet back saying
   // no pictures found.
