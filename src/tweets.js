@@ -5,7 +5,7 @@ module.exports = {
       in_reply_to_status_id: inReplyToStatusId
     }),
 
-  tweetImage: (b64content, T) => {
+  tweetImage: (b64content, T, tweetAuthor, inReplyToStatusId) => {
     // first we must post the media to Twitter
     T.post('media/upload', { media_data: b64content }, function (err, data, response) {
       // now we can assign alt text to the media, for use by screen readers and
