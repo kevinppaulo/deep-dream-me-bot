@@ -5,8 +5,6 @@ const deepai = require("deepai");
 
 deepai.setApiKey(process.env.DEEP_AI_API_KEY);
 
-console.log(process.env);
-
 const T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -41,7 +39,6 @@ stream.on("tweet", async function (tweet) {
   }
 
   if(!base64Arr.length){
-    console.log("ENTREI NO IF DO LENGTH");
     T.post('statuses/update', {
       'status': `@${tweetAuthor} Não consegui identificar nenhuma imagem em seu tweet.`,
       'in_reply_to_status_id': inReplyToStatusId 
