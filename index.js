@@ -3,8 +3,6 @@ const Twit = require("twit");
 const imageToBase64 = require("image-to-base64");
 const deepai = require("deepai");
 
-console.log(process.env.TWITTER_CONSUMER_KEY);
-
 deepai.setApiKey(process.env.DEEP_AI_API_KEY);
 
 const T = new Twit({
