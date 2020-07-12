@@ -1,0 +1,20 @@
+{
+  "name": "delivery-twitter-bot",
+  "version": "1.0.0",
+  "description": "A twitter bot that delivers food ",
+  "main": "index.js",
+  "repository": "git@github.com:kevinppaulo/delivery-twitter-bot.git",
+  "author": "Kevin Paulo <kevinppaulo@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "deepai": "^1.0.15",
+    "dotenv": "^8.2.0",
+    "firebase": "^7.16.0",
+    "image-to-base64": "^2.1.0",
+    "prettier": "^2.0.5",
+    "twit": "^2.2.11"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
