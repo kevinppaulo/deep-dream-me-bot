@@ -9,9 +9,10 @@ deepai.setApiKey(process.env.DEEP_AI_API_KEY);
 // required wrapper for easy tweeting.
 const T = require("./src/loadTwit.js");
 
+console.log(T);
+
 // tweeting functions
 const {tweetNoPicturesFound, tweetImage} = require("./src/tweets.js");
-
 
 const stream = T.stream("statuses/filter", { track: "DeepDreamMeBot" });
 stream.on("tweet", async function (tweet) {
@@ -19,7 +20,7 @@ stream.on("tweet", async function (tweet) {
   const inReplyToStatusId = tweet.id_str;
   const tweetAuthor = tweet.user.screen_name;
   console.log("Starting the filters");
-  const base64Arr = tweet.extended_entities.media
+  const base64Arr = await tweet.extended_entities.media
     .filter(media => media.type === "photo")
     .map(media => media.url)
     .map(async (link) => deepai.callStandardApi("deepdream", {image: link}))
