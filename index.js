@@ -5,6 +5,8 @@ const deepai = require("deepai");
 
 deepai.setApiKey(process.env.DEEP_AI_API_KEY);
 
+console.log(process.env);
+
 const T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
@@ -17,6 +19,7 @@ const T = new Twit({
 const stream = T.stream("statuses/filter", { track: "DeepDreamMeBot" });
 
 stream.on("tweet", async function (tweet) {
+  console.log("TWEET ENTERED");
   const deepDreamLinks = [];
   const base64Arr = [];
   const inReplyToStatusId = tweet.id_str;
@@ -38,6 +41,7 @@ stream.on("tweet", async function (tweet) {
   }
 
   if(!base64Arr.length){
+    console.log("ENTREI NO IF DO LENGTH");
     T.post('statuses/update', {
       'status': `@${tweetAuthor} Não consegui identificar nenhuma imagem em seu tweet.`,
       'in_reply_to_status_id': inReplyToStatusId 
